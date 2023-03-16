@@ -1,7 +1,7 @@
 {
   "name": "@tracktor/react-google-tag-manager",
   "description": "React library for use easily the Google Tag Manager",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": false,
   "license": "ISC",
   "type": "module",
@@ -32,7 +32,7 @@
     "lint": "eslint . --max-warnings=0 && tsc --noEmit",
     "preview": "vite preview",
     "test": "yarn lint && vitest",
-    "prepare": "husky install"
+    "prepare": "yarn run build && husky install"
   },
   "dependencies": {
     "@tracktor/react-utils": "^1.7.0",
