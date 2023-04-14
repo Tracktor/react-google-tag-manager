@@ -1,8 +1,9 @@
-import { useScript } from "@tracktor/react-utils";
-import { createContext, ReactNode, useMemo } from "react";
+import { useIsomorphicLayoutEffect, useScript } from "@tracktor/react-utils";
+import { createContext, ReactNode, useMemo, useRef } from "react";
+import { injectDataLayer, createNoScript } from "@/utils/utilsGTM";
 
 interface GoogleTagManagerProviderProps {
-  id: string;
+  id?: `GTM-${string}` | string;
   options?: {
     scriptUrl?: string;
     dataLayerName?: string;
@@ -10,31 +11,53 @@ interface GoogleTagManagerProviderProps {
   children: ReactNode;
 }
 
-const DEFAULT_SCRIPT_URL = "https://www.googletagmanager.com/gtag/js";
-const DEFAULT_DATA_LAYER_NAME = "dataLayer";
-
-export const GoogleTagManagerContext = createContext({
-  id: "",
+interface DefaultContextValue {
+  id?: GoogleTagManagerProviderProps["id"];
   options: {
-    dataLayerName: DEFAULT_DATA_LAYER_NAME,
-    scriptUrl: DEFAULT_SCRIPT_URL,
+    scriptUrl: string;
+    dataLayerName: string;
+  };
+}
+
+const defaultContextValue = {
+  id: undefined,
+  options: {
+    dataLayerName: "dataLayer",
+    scriptUrl: "https://www.googletagmanager.com/gtm.js",
   },
-});
+};
+
+export const GoogleTagManagerContext = createContext<DefaultContextValue>(defaultContextValue);
 
 const GoogleTagManagerProvider = ({ children, id, options }: GoogleTagManagerProviderProps) => {
+  const { dataLayerName, scriptUrl } = { ...options, ...defaultContextValue.options };
+  const isInitialized = useRef<boolean>(false);
+
   const value = useMemo(
     () => ({
       id,
       options: {
-        dataLayerName: options?.dataLayerName || DEFAULT_DATA_LAYER_NAME,
-        scriptUrl: options?.scriptUrl || DEFAULT_SCRIPT_URL,
+        dataLayerName,
+        scriptUrl,
       },
     }),
-    [id, options]
+    [dataLayerName, id, scriptUrl]
   );
 
+  // Initialize GTM
+  useIsomorphicLayoutEffect(() => {
+    if (!id || isInitialized.current) {
+      return;
+    }
+
+    isInitialized.current = true;
+
+    injectDataLayer(dataLayerName);
+    createNoScript(id);
+  }, [dataLayerName, id]);
+
   // Load the script asynchronously
-  useScript(`${value.options.scriptUrl}?id=${value.id}`, !!value.id);
+  useScript(`${value.options.scriptUrl}?id=${value.id}`, { enable: !!value.id, position: "head-start" });
 
   return <GoogleTagManagerContext.Provider value={value}>{children}</GoogleTagManagerContext.Provider>;
 };

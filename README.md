@@ -2,12 +2,13 @@
 
 [![npm version](https://badge.fury.io/js/%40tracktor%2Freact-google-tag-manager.svg)](https://badge.fury.io/js/%40tracktor%2Freact-google-tag-manager)
 
-**React library for use easily the Google Tag Manager**
+**Very light React library for use easily the Google Tag Manager**
 
 
 - [Installation](#Installation)
 - [Usage](#Usage)
-- [Options](#Options)
+- [Props and options](#Props-and-Options)
+- [Hooks](#kook)
 
 ## Installation
 
@@ -48,9 +49,10 @@ const YourComponent = () => {
 
 export default App;
 ```
-## Options
 
-Your can provide some options to the provider.
+## Props and options
+
+Your can provide some props and options to the provider.
 
 ```typescript jsx
 import { GoogleTagManagerProvider } from "@tracktor/react-google-tag-manager";
@@ -63,10 +65,21 @@ const App = () => (
 
 export default App;
 ```
+| Props   | Type       | Default   | Description                                                                                                                   |
+|---------|------------|-----------|-------------------------------------------------------------------------------------------------------------------------------|
+| id      | GTM-XXXXXX | undefined | Define the Google Tag Manager ID id. You can create an account to get an ID here : https://tagmanager.google.com/?hl=fr#/home |
+| options | object     | undefined | Provider options                                                                                                              |
 
 
-| Option        | Type   | Default                                  | Description             |
-|---------------|--------|------------------------------------------|-------------------------|
-| scriptUrl     | string | https://www.googletagmanager.com/gtag/js | Set script url to load  |
-| dataLayerName | string | dataLayer                                | Set the data layer name |
+| Option        | Type   | Default                                 | Description             |
+|---------------|--------|-----------------------------------------|-------------------------|
+| scriptUrl     | string | https://www.googletagmanager.com/gtm.js | Set script url to load  |
+| dataLayerName | string | dataLayer                               | Set the data layer name |
 
+## Hooks
+`useGoogleTagManager`
+
+| Export    | type     | Description    |
+|-----------|----------|----------------|
+| sendEvent | function | Send GTM event |
+| id        | string   | The GTM id     |
