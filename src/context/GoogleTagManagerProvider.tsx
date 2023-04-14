@@ -30,7 +30,7 @@ const defaultContextValue = {
 export const GoogleTagManagerContext = createContext<DefaultContextValue>(defaultContextValue);
 
 const GoogleTagManagerProvider = ({ children, id, options }: GoogleTagManagerProviderProps) => {
-  const { dataLayerName, scriptUrl } = { ...options, ...defaultContextValue.options };
+  const { dataLayerName, scriptUrl } = { ...defaultContextValue.options, ...options };
   const isInitialized = useRef<boolean>(false);
 
   const value = useMemo(
