@@ -20,7 +20,7 @@ const useGoogleTagManager = () => {
 
       window.dataLayer = [];
     },
-    [id, options.dataLayerName]
+    [id, options.dataLayerName],
   );
 
   return { id, sendEvent };

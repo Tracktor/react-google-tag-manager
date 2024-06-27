@@ -1,12 +1,6 @@
 import GoogleTagManagerProvider from "@/context/GoogleTagManagerProvider";
 import useGoogleTagManager from "@/hooks/useGoogleTagManager";
 
-const App = () => (
-  <GoogleTagManagerProvider id="">
-    <Page />
-  </GoogleTagManagerProvider>
-);
-
 const Page = () => {
   const { sendEvent } = useGoogleTagManager();
 
@@ -19,5 +13,11 @@ const Page = () => {
     </main>
   );
 };
+
+const App = () => (
+  <GoogleTagManagerProvider id="">
+    <Page />
+  </GoogleTagManagerProvider>
+);
 
 export default App;

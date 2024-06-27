@@ -41,7 +41,7 @@ const GoogleTagManagerProvider = ({ children, id, options }: GoogleTagManagerPro
         scriptUrl,
       },
     }),
-    [dataLayerName, id, scriptUrl]
+    [dataLayerName, id, scriptUrl],
   );
 
   // Initialize GTM

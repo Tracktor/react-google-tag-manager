@@ -2,7 +2,7 @@ import { resolve } from "path";
 import react from "@vitejs/plugin-react";
 import dts from "vite-plugin-dts";
 import { defineConfig } from "vitest/config";
-import { dependencies, name } from "./package.json";
+import { name, dependencies, peerDependencies } from "./package.json";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -13,7 +13,7 @@ export default defineConfig({
       name,
     },
     rollupOptions: {
-      external: [...Object.keys(dependencies)],
+      external: [...Object.keys(dependencies), ...Object.keys(peerDependencies)],
       output: {
         globals: {
           "@tracktor/react-utils": "reactUtils",
@@ -33,6 +33,6 @@ export default defineConfig({
   test: {
     environment: "jsdom",
     globals: true,
-    setupFiles: "src/config/setupTests.ts",
+    setupFiles: "/test.config.ts",
   },
 });
