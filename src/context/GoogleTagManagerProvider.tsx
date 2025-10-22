@@ -1,6 +1,6 @@
 import { useIsomorphicLayoutEffect, useScript } from "@tracktor/react-utils";
 import { createContext, ReactNode, useMemo, useRef } from "react";
-import { injectDataLayer, createNoScript } from "@/utils/utilsGTM";
+import { createNoScript, injectDataLayer } from "@/utils/utilsGTM";
 
 interface GoogleTagManagerProviderProps {
   id?: `GTM-${string}` | string;
