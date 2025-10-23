@@ -33,7 +33,8 @@
     "lint:fix": "biome check . --write",
     "preview": "vite preview",
     "test": "bun run lint && vitest",
-    "prepare": "bun run build && husky install"
+    "prepare": "bun run build && husky install",
+    "release": "standard-version"
   },
   "dependencies": {
     "@tracktor/react-utils": "^1.24.0"
@@ -50,6 +51,7 @@
     "jsdom": "^21.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "standard-version": "^9.5.0",
     "typescript": "^5.8.3",
     "vite": "^7.0.0",
     "vite-plugin-dts": "^4.5.4",
