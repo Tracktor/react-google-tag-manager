@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.2](https://github.com/Tracktor/react-google-tag-manager/compare/v1.4.1...v1.4.2) (2025-10-23)
+
+
+### 🐛 Fixes
+
+* test publish ([c7473b9](https://github.com/Tracktor/react-google-tag-manager/commit/c7473b9bffce600b3a5ca76b6efb079b1fcb0e41))
+
 ### [1.4.1](https://github.com/Tracktor/react-google-tag-manager/compare/v1.4.0...v1.4.1) (2025-10-23)
 
 
