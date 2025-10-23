@@ -1,4 +1,4 @@
-name: Release
+name: 🚀 Release
 
 on:
   push:
@@ -14,28 +14,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: 🛎️ Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Setup Bun
+      - name: 🐰 Setup Bun
         uses: oven-sh/setup-bun@v1
         with:
           bun-version: latest
 
-      - name: Install dependencies
+      - name: 📦 Install dependencies
         run: bun install
 
-      - name: Configure Git user
+      - name: 🧑 Configure Git user
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Run lint & tests
+      - name: 🧪 Run lint & tests
         run: bun run test
 
-      - name: Bump version & generate changelog
+      - name: 🏷️ Bump version & generate changelog
         id: bump
         run: |
           OUTPUT=$(npx standard-version || true)
@@ -51,19 +51,19 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Stop pipeline if no release bump
+      - name: ⏹️ Stop pipeline if no release bump
         if: steps.bump.outputs.should_publish == 'false'
         run: |
           echo "⏹️ No bump detected — stopping workflow (no publish, no release)."
           exit 0
 
-      - name: Push changes & tags
+      - name: 🚀 Push changes & tags
         run: git push --follow-tags origin main
 
-      - name: Build project
+      - name: 🏗️ Build project
         run: bun run build
 
-      - name: Check if version already exists on npm
+      - name: 🔍 Check if version already exists on npm
         run: |
           PKG_NAME=$(jq -r .name package.json)
           VERSION=$(jq -r .version package.json)
@@ -72,11 +72,11 @@ jobs:
             exit 0
           fi
 
-      - name: Get version from package.json
+      - name: 🆔 Get version from package.json
         id: get_version
         run: echo "version=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
 
-      - name: Create GitHub Release
+      - name: 📝 Create GitHub Release
         uses: softprops/action-gh-release@v2
         if: steps.bump.outputs.should_publish == 'true'
         with:
@@ -85,21 +85,16 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Check NPM authentication
+      - name: 🔐 Setup npm auth
         if: steps.bump.outputs.should_publish == 'true'
-        run: npm whoami
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Configure npm auth
-        if: steps.bump.outputs.should_publish == 'true'
         run: |
           echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          npm whoami
 
-      - name: Publish to npm
+      - name: 📤 Publish to npm
         if: steps.bump.outputs.should_publish == 'true'
-        run: bun publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --access public
