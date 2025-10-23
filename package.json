@@ -32,8 +32,8 @@
     "lint": "biome check --diagnostic-level=error . && tsc --noEmit --incremental",
     "lint:fix": "biome check . --write",
     "preview": "vite preview",
-    "test": "yarn lint && vitest",
-    "prepare": "yarn run build && husky install"
+    "test": "bun run lint && vitest",
+    "prepare": "bun run build && husky install"
   },
   "dependencies": {
     "@tracktor/react-utils": "^1.24.0"
