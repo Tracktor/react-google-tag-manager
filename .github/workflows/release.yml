@@ -38,13 +38,12 @@ jobs:
       - name: Bump version & generate changelog
         id: bump
         run: |
-          # Exécute standard-version et capture sa sortie
           OUTPUT=$(npx standard-version --release-as auto || true)
           echo "$OUTPUT"
 
-          # Vérifie si une version a été bumpée
           if echo "$OUTPUT" | grep -q "to null"; then
             echo "No new release detected (no feat/fix commits)."
+            git restore package.json
             echo "should_publish=false" >> $GITHUB_OUTPUT
           else
             echo "should_publish=true" >> $GITHUB_OUTPUT
@@ -59,8 +58,7 @@ jobs:
           exit 0
 
       - name: Push changes & tags
-        run: |
-          git push --follow-tags origin main
+        run: git push --follow-tags origin main
 
       - name: Build project
         run: bun run build
