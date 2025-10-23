@@ -29,6 +29,7 @@ or
 bun add @tracktor/react-google-tag-manager
 ```
 
+
 ## Usage
 
 ```typescript jsx
@@ -56,6 +57,7 @@ const YourComponent = () => {
 export default App;
 ```
 
+
 ## Props and options
 
 Your can provide some props and options to the provider.
@@ -81,6 +83,7 @@ export default App;
 |---------------|--------|-----------------------------------------|-------------------------|
 | scriptUrl     | string | https://www.googletagmanager.com/gtm.js | Set script url to load  |
 | dataLayerName | string | dataLayer                               | Set the data layer name |
+
 
 ## Hooks
 `useGoogleTagManager`
