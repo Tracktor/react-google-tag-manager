@@ -23,6 +23,12 @@ or
 npm install @tracktor/react-google-tag-manager
 ```
 
+or 
+
+```console
+bun add @tracktor/react-google-tag-manager
+```
+
 ## Usage
 
 ```typescript jsx
