@@ -33,7 +33,7 @@
     "lint:fix": "biome check . --write",
     "preview": "vite preview",
     "test": "bun run lint && vitest",
-    "prepare": "bun run build && husky install",
+    "prepare": "bun run build",
     "release": "standard-version"
   },
   "dependencies": {
