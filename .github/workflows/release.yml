@@ -38,7 +38,7 @@ jobs:
       - name: Bump version & generate changelog
         id: bump
         run: |
-          OUTPUT=$(npx standard-version --release-as auto || true)
+          OUTPUT=$(npx standard-version || true)
           echo "$OUTPUT"
 
           if echo "$OUTPUT" | grep -q "to null"; then
