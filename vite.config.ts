@@ -1,6 +1,6 @@
 import { resolve } from "path";
 import react from "@vitejs/plugin-react";
-import dts from "vite-plugin-dts";
+import dts from "unplugin-dts/vite";
 import { defineConfig } from "vitest/config";
 import { name, dependencies, peerDependencies } from "./package.json";
 
@@ -12,7 +12,7 @@ export default defineConfig({
       fileName: "[name]",
       name,
     },
-    rollupOptions: {
+    rolldownOptions: {
       external: [...Object.keys(dependencies), ...Object.keys(peerDependencies)],
       output: {
         globals: {

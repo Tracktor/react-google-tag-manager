@@ -22,6 +22,7 @@
   "homepage": "https://github.com/Tracktor/react-google-tag-manager#readme",
   "exports": {
     ".": {
+      "types": "./dist/main.d.ts",
       "import": "./dist/main.js",
       "require": "./dist/main.umd.cjs"
     }
@@ -46,15 +47,15 @@
     "@tracktor/biome-config-react": "^1.1.1",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "@vitejs/plugin-react": "^4.3.1",
+    "@vitejs/plugin-react": "^6.0.1",
     "husky": "^8.0.3",
     "jsdom": "^21.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "standard-version": "^9.5.0",
     "typescript": "^5.8.3",
-    "vite": "^7.0.0",
-    "vite-plugin-dts": "^4.5.4",
+    "unplugin-dts": "^1.0.0-beta.6",
+    "vite": "8.0.3",
     "vitest": "^1.6.1"
   },
   "peerDependencies": {
