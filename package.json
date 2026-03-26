@@ -38,7 +38,7 @@
     "release": "standard-version"
   },
   "dependencies": {
-    "@tracktor/react-utils": "^1.24.0"
+    "@tracktor/react-utils": "^1.28.3"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.14.1",
