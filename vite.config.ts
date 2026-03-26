@@ -1,11 +1,15 @@
 import { resolve } from "path";
 import react from "@vitejs/plugin-react";
 import dts from "unplugin-dts/vite";
-import { defineConfig } from "vitest/config";
-import { name, dependencies, peerDependencies } from "./package.json";
+import { defineConfig, UserConfig as UserConfigVite } from "vite";
+import { UserConfig as InlineConfigVitest } from "vitest/config";
+import { dependencies, name, peerDependencies } from "./package.json";
 
-// https://vitejs.dev/config/
-export default defineConfig({
+type UserConfig = UserConfigVite & {
+  test: InlineConfigVitest["test"];
+};
+
+const config: UserConfig = {
   build: {
     lib: {
       entry: resolve(__dirname, "src/main.ts"),
@@ -13,7 +17,7 @@ export default defineConfig({
       name,
     },
     rolldownOptions: {
-      external: [...Object.keys(dependencies), ...Object.keys(peerDependencies)],
+      external: [...Object.keys(dependencies), ...Object.keys(peerDependencies), "react/jsx-runtime", "react/jsx-dev-runtime"],
       output: {
         globals: {
           "@tracktor/react-utils": "reactUtils",
@@ -35,4 +39,7 @@ export default defineConfig({
     globals: true,
     setupFiles: "/test.config.ts",
   },
-});
+};
+
+
+export default defineConfig(config);
