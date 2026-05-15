@@ -1,7 +1,5 @@
 # React Google Tag Manager
 
-[![npm version](https://badge.fury.io/js/%40tracktor%2Freact-google-tag-manager.svg)](https://badge.fury.io/js/%40tracktor%2Freact-google-tag-manager)
-
 **Very light React library for use easily the Google Tag Manager**
 
 
@@ -13,27 +11,27 @@
 ## Installation
 
 ```console
-yarn add @tracktor/react-google-tag-manager
+yarn add @getsoren/react-google-tag-manager
 ```
 
 or
 
 
 ```console
-npm install @tracktor/react-google-tag-manager
+npm install @getsoren/react-google-tag-manager
 ```
 
-or 
+or
 
 ```console
-bun add @tracktor/react-google-tag-manager
+bun add @getsoren/react-google-tag-manager
 ```
 
 
 ## Usage
 
 ```typescript jsx
-import { GoogleTagManagerProvider, useGoogleTagManager } from "@tracktor/react-google-tag-manager";
+import { GoogleTagManagerProvider, useGoogleTagManager } from "@getsoren/react-google-tag-manager";
 
 const App = () => (
   <GoogleTagManagerProvider id="YOUR_GOOGLE_TAG_ID">
@@ -63,7 +61,7 @@ export default App;
 Your can provide some props and options to the provider.
 
 ```typescript jsx
-import { GoogleTagManagerProvider } from "@tracktor/react-google-tag-manager";
+import { GoogleTagManagerProvider } from "@getsoren/react-google-tag-manager";
 
 const App = () => (
   <GoogleTagManagerProvider id="YOUR_GOOGLE_TAG_ID" options={{ dataLayerName: "..." }}>

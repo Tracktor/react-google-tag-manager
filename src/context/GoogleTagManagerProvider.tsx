@@ -1,4 +1,4 @@
-import { useIsomorphicLayoutEffect, useScript } from "@tracktor/react-utils";
+import { useIsomorphicLayoutEffect, useScript } from "@getsoren/react-utils";
 import { createContext, ReactNode, useMemo, useRef } from "react";
 import { createNoScript, injectDataLayer } from "@/utils/utilsGTM";
 

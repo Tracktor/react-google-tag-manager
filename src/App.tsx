@@ -6,7 +6,7 @@ const Page = () => {
 
   return (
     <main>
-      <h1>@tracktor/react-google-tag-manager</h1>
+      <h1>@getsoren/react-google-tag-manager</h1>
       <button type="button" onClick={() => sendEvent({ event: "eventName", value: "someValue" })}>
         Click me
       </button>

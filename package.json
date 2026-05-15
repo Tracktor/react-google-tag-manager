@@ -1,5 +1,5 @@
 {
-  "name": "@tracktor/react-google-tag-manager",
+  "name": "@getsoren/react-google-tag-manager",
   "description": "React library for use easily the Google Tag Manager",
   "version": "1.4.6",
   "private": false,
@@ -13,13 +13,13 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/Tracktor/react-google-tag-manager.git"
+    "url": "git+https://github.com/getsoren/react-google-tag-manager.git"
   },
   "author": "Mickaël Austoni",
   "bugs": {
-    "url": "https://github.com/Tracktor/react-google-tag-manager/issues"
+    "url": "https://github.com/getsoren/react-google-tag-manager/issues"
   },
-  "homepage": "https://github.com/Tracktor/react-google-tag-manager#readme",
+  "homepage": "https://github.com/getsoren/react-google-tag-manager#readme",
   "exports": {
     ".": {
       "types": "./dist/main.d.ts",
@@ -35,16 +35,16 @@
     "preview": "vite preview",
     "test": "bun run lint && vitest",
     "prepare": "bun run build",
-    "release": "standard-version"
+    "release": "commit-and-tag-version"
   },
   "dependencies": {
-    "@tracktor/react-utils": "^1.28.3"
+    "@getsoren/react-utils": "^1.28.3"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
-    "@tracktor/biome-config-react": "^1.1.1",
+    "@getsoren/biome-config-react": "^1.1.1",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react": "^6.0.1",
@@ -52,14 +52,14 @@
     "jsdom": "^21.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "standard-version": "^9.5.0",
     "typescript": "^5.8.3",
     "unplugin-dts": "^1.0.0-beta.6",
     "vite": "8.0.3",
-    "vitest": "^1.6.1"
+    "vitest": "^1.6.1",
+    "commit-and-tag-version": "^12.6.0"
   },
   "peerDependencies": {
-    "@tracktor/react-utils": "*",
+    "@getsoren/react-utils": "*",
     "react": "^17.0.0 || ^18.0.0 || ^19.0.0",
     "react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0"
   },
@@ -71,7 +71,10 @@
     "gtm",
     "gtm hook",
     "analytics",
-    "tracking",
-    "tracktor"
-  ]
+    "tracking"
+  ],
+  "commit-and-tag-version": {
+    "releaseCommitMessageFormat": "chore(release): {{currentTag}} [skip ci]",
+    "tagPrefix": ""
+  }
 }

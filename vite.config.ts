@@ -20,7 +20,7 @@ const config: UserConfig = {
       external: [...Object.keys(dependencies), ...Object.keys(peerDependencies), "react/jsx-runtime", "react/jsx-dev-runtime"],
       output: {
         globals: {
-          "@tracktor/react-utils": "reactUtils",
+          "@getsoren/react-utils": "reactUtils",
           react: "React",
         },
       },
